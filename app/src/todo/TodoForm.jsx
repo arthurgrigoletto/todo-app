@@ -9,6 +9,8 @@ export default props => (
         id="description"
         className="form-control"
         placeholder="Adicione uma tarefa"
+        onChange={props.handleChange}
+        value={props.description}
       />
     </Grid>
 
