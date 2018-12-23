@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { DESCRIPTION_CHANGED, TODO_SEARCH, TODO_ADD } from './types';
+import {
+  DESCRIPTION_CHANGED,
+  TODO_SEARCH,
+  TODO_ADD,
+  TODO_CLEAR
+} from './types';
 
 const URL = 'http://localhost:3003/api/todos';
 
@@ -20,12 +25,7 @@ export const search = () => {
 export const add = description => dispatch => {
   axios
     .post(URL, { description })
-    .then(res =>
-      dispatch({
-        type: TODO_ADD,
-        payload: res.data
-      })
-    )
+    .then(res => dispatch(clear()))
     .then(resp => dispatch(search()));
 };
 
@@ -43,4 +43,10 @@ export const markAsPending = todo => dispatch => {
 
 export const remove = todo => dispatch => {
   axios.delete(`${URL}/${todo._id}`).then(res => dispatch(search()));
+};
+
+export const clear = () => {
+  return {
+    type: TODO_CLEAR
+  };
 };

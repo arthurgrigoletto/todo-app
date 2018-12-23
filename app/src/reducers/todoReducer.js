@@ -1,4 +1,8 @@
-import { DESCRIPTION_CHANGED, TODO_SEARCH, TODO_ADD } from '../actions/types';
+import {
+  DESCRIPTION_CHANGED,
+  TODO_SEARCH,
+  TODO_CLEAR
+} from '../actions/types';
 
 const INITIAL_STATE = {
   description: '',
@@ -17,11 +21,11 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         list: action.payload.data
       };
-    case TODO_ADD:
+    case TODO_CLEAR:
       return {
         ...state,
-        description: '',
-      }
+        description: ''
+      };
     default:
       return state;
   }
