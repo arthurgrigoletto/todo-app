@@ -17,17 +17,26 @@ export const search = () => {
   };
 };
 
-export const add = description => {
-  return dispatch => {
-    axios.post(URL, { description })
-    .then(res => 
+export const add = description => dispatch => {
+  axios
+    .post(URL, { description })
+    .then(res =>
       dispatch({
         type: TODO_ADD,
         payload: res.data
-      })  
+      })
     )
-    .then(resp => 
-      dispatch(search())
-    )
-  }
-}
+    .then(resp => dispatch(search()));
+};
+
+export const markAsDone = todo => dispatch => {
+  axios
+    .put(`${URL}/${todo._id}`, { ...todo, done: true })
+    .then(res => dispatch(search()));
+};
+
+export const markAsPending = todo => dispatch => {
+  axios
+    .put(`${URL}/${todo._id}`, { ...todo, done: false })
+    .then(res => dispatch(search()));
+};
