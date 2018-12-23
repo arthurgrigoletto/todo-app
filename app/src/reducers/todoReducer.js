@@ -1,24 +1,8 @@
 import { DESCRIPTION_CHANGED, TODO_SEARCH } from '../actions/types';
 
 const INITIAL_STATE = {
-  description: 'Ler Livro',
-  list: [
-    {
-      _id: 1,
-      description: 'Pagar Fatura do Cartão',
-      done: true
-    },
-    {
-      _id: 2,
-      description: 'Reunião com a equipe às 10:00',
-      done: false
-    },
-    {
-      _id: 3,
-      description: 'Consulta Médica na Terça depois do almoço',
-      done: false
-    }
-  ]
+  description: '',
+  list: []
 };
 
 export default (state = INITIAL_STATE, action) => {
