@@ -19,7 +19,7 @@ export default (state = INITIAL_STATE, action) => {
     case TODO_SEARCH:
       return {
         ...state,
-        list: action.payload.data
+        list: action.payload
       };
     case TODO_CLEAR:
       return {
